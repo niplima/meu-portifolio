@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contato | Portfólio de Nicolas</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+  <script src="../js/script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-flex">
+      <h1>Nicolas | Portfólio</h1>
+      <nav aria-label="Menu principal">
+        <a href="../index.html">Início</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card contact-layout">
+      <div class="contact-form-wrapper">
+        <h2>Entre em contato</h2>
+        <p class="section-copy">Preencha o formulário abaixo para enviar uma mensagem.</p>
+
+        <p id="feedback-mensagem" class="mensagem-feedback" role="status" aria-live="polite" style="display: none;"></p>
+
+        <form id="form-contato" novalidate>
+          <div class="field">
+            <label for="nome">Nome completo:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome..." required />
+          </div>
+
+          <div class="field">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required />
+          </div>
+
+          <div class="field">
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem aqui..." required></textarea>
+          </div>
+
+          <button type="submit" class="button primary">Enviar mensagem</button>
+        </form>
+      </div>
+
+      <aside class="contact-info">
+        <h3>Onde me encontrar</h3>
+        <p><strong>E-mail:</strong> nicolas@exemplo.com</p>
+        <p><strong>GitHub:</strong> github.com/nicolas</p>
+        <p><strong>LinkedIn:</strong> linkedin.com/in/nicolas</p>
+
+        <div class="cep-box">
+          <label for="cep">Buscar endereço por CEP</label>
+          <div class="cep-row">
+            <input type="text" id="cep" maxlength="9" placeholder="Digite o CEP" />
+            <button type="button" id="buscar-cep" class="button secondary">Buscar</button>
+          </div>
+        </div>
+
+        <div class="address-preview">
+          <h4>Endereço de encontro</h4>
+          <p id="endereco-mapa">Rua das Flores, 250 - Centro, São Paulo - SP</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="card">
+      <h2>Mapa do endereço</h2>
+      <div id="mapa-contato" aria-label="Mapa com localização de encontro"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Nicolas - Todos os direitos reservados</p>
+    </div>
+  </footer>
+</body>
+</html>

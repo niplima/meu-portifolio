@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home | Portfólio de Nicolas</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-flex">
+      <h1>Nicolas | Portfólio</h1>
+      <nav aria-label="Menu principal">
+        <a href="index.html">Início</a>
+        <a href="pages/projetos.html">Projetos</a>
+        <a href="pages/contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero card">
+      <div class="hero-text">
+        <p class="eyebrow">Desenvolvedor Web</p>
+        <h2>Transformando ideias em experiências digitais.</h2>
+        <p>
+          Sou Nicolas, apaixonado por tecnologia, design limpo e desenvolvimento web com foco em
+          usabilidade, performance e impacto real para pessoas e negócios.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="pages/contato.html">Fale comigo</a>
+          <a class="button secondary" href="pages/projetos.html">Ver projetos</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Banner ilustrativo do portfólio">
+        <img src="img/banner.svg" alt="Banner do portfólio" class="banner-img" />
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Sobre mim</h2>
+      <p>
+        Estudo tecnologia com foco em criação de interfaces modernas, aplicações interativas e soluções web
+        eficientes. Meu objetivo é desenvolver projetos que unem visual envolvente, boa arquitetura e valor
+        real para usuários.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Destaque dos projetos</h2>
+      <p class="section-copy">Clique nas miniaturas para ver o projeto em destaque.</p>
+
+      <div class="galeria-destaque">
+        <img id="imagem-destaque" src="img/projeto1.svg" alt="Projeto 1: E-commerce Responsivo" />
+        <p id="legenda-destaque" class="legenda-destaque">Projeto 1: E-commerce Responsivo</p>
+      </div>
+
+      <div class="galeria-miniaturas" aria-label="Miniaturas de projetos">
+        <img class="miniatura ativa" src="img/projeto1.svg" alt="Projeto 1: E-commerce Responsivo" />
+        <img class="miniatura" src="img/projeto2.svg" alt="Projeto 2: Aplicativo de Gestão" />
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <h3>Projeto 1: E-commerce Responsivo</h3>
+          <p>Loja virtual com layout moderno, navegação fluida e foco em conversão para mobile e desktop.</p>
+        </article>
+
+        <article class="project-card">
+          <h3>Projeto 2: Aplicativo de Gestão</h3>
+          <p>Ferramenta interativa para organização de tarefas, acompanhamento de metas e produtividade.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Contato</h2>
+      <p>Se você deseja colaborar, discutir um projeto ou apenas trocar uma ideia, <a href="pages/contato.html">clique aqui</a> e envie sua mensagem.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Nicolas - Todos os direitos reservados</p>
+    </div>
+  </footer>
+</body>
+</html>
