@@ -1,0 +1,18 @@
+COMO USAR
+
+A) GitHub Pages (site publicado)
+   Envie todos os arquivos para o repositório e ative Settings > Pages.
+   Funciona em "modo demonstração": projetos aparecem e as mensagens do
+   formulário ficam salvas no navegador do visitante (localStorage).
+   (GitHub Pages não executa PHP nem Python.)
+
+B) Com banco de dados de verdade (Python + SQLite)
+   1. Instale o Python (python.org) e, no terminal, dentro desta pasta:
+         pip install flask
+         python app.py
+   2. Abra http://localhost:5000
+   O arquivo portfolio.db é criado sozinho. Contato salva nele e
+   "Mensagens (Admin)" lista, edita e exclui.
+
+O modelo físico para MySQL (entrega da AV1) está em banco/portfolio.sql;
+app.py usa a mesma estrutura em SQLite.

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensagens (Admin) - Portfólio de Nicolas</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/dados.js"></script>
+  <style>
+    table { width: 100%; border-collapse: collapse; background: #fff; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
+    th { background: #2c3e50; color: #fff; }
+    .acoes button { padding: 4px 10px; margin-right: 4px; }
+    .excluir { background: #c0392b; }
+    .modo { font-size: .9rem; color: #555; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Nicolas | Portfólio</h1>
+    <nav>
+      <a href="../index.html">Início</a>
+      <a href="projetos.html">Projetos</a>
+      <a href="contato.html">Contato</a>
+      <a href="admin.html">Mensagens (Admin)</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Mensagens recebidas</h2>
+      <p id="modo" class="modo"></p>
+      <table>
+        <thead><tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Projeto</th><th>Mensagem</th><th>Enviada em</th><th>Ações</th></tr></thead>
+        <tbody id="lista"></tbody>
+      </table>
+      <p id="vazio" style="display:none;margin-top:12px">Nenhuma mensagem ainda.</p>
+    </section>
+
+    <section id="edicao" style="display:none">
+      <h2>Editar mensagem</h2>
+      <form id="form-edicao">
+        <input type="hidden" id="e-id">
+        <div><label for="e-nome">Nome:</label><br><input id="e-nome" required></div>
+        <div><label for="e-email">E-mail:</label><br><input id="e-email" type="email" required></div>
+        <div><label for="e-msg">Mensagem:</label><br><textarea id="e-msg" rows="4" required></textarea></div>
+        <button type="submit">Salvar Alteração</button>
+        <button type="button" id="cancelar" style="background:#7f8c8d">Cancelar</button>
+      </form>
+    </section>
+  </main>
+  <footer><p>&copy; 2026 Nicolas - Todos os direitos reservados</p></footer>
+
+  <script>
+    const lista = document.getElementById('lista');
+    const vazio = document.getElementById('vazio');
+    const edicao = document.getElementById('edicao');
+    let mensagens = [];
+
+    function td(texto) { const c = document.createElement('td'); c.textContent = texto == null ? '—' : texto; return c; }
+
+    function carregar() {
+      Dados.listarMensagens().then(function (ms) {
+        mensagens = ms;
+        lista.innerHTML = '';
+        vazio.style.display = ms.length ? 'none' : 'block';
+        ms.forEach(function (m) {
+          const tr = document.createElement('tr');
+          [m.id_mensagem, m.nome, m.email, m.projeto, m.mensagem, m.data_envio].forEach(function (v) { tr.appendChild(td(v)); });
+          const ac = document.createElement('td'); ac.className = 'acoes';
+          const be = document.createElement('button'); be.textContent = 'Editar';
+          be.onclick = function () { abrirEdicao(m); };
+          const bx = document.createElement('button'); bx.textContent = 'Excluir'; bx.className = 'excluir';
+          bx.onclick = function () {
+            if (confirm('Excluir esta mensagem?')) Dados.excluirMensagem(m.id_mensagem).then(carregar);
+          };
+          ac.append(be, bx); tr.appendChild(ac); lista.appendChild(tr);
+        });
+      });
+    }
+    function abrirEdicao(m) {
+      document.getElementById('e-id').value = m.id_mensagem;
+      document.getElementById('e-nome').value = m.nome;
+      document.getElementById('e-email').value = m.email;
+      document.getElementById('e-msg').value = m.mensagem;
+      edicao.style.display = 'block'; edicao.scrollIntoView();
+    }
+    document.getElementById('cancelar').onclick = function () { edicao.style.display = 'none'; };
+    document.getElementById('form-edicao').addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      Dados.editarMensagem(document.getElementById('e-id').value, {
+        nome: document.getElementById('e-nome').value,
+        email: document.getElementById('e-email').value,
+        mensagem: document.getElementById('e-msg').value
+      }).then(function () { edicao.style.display = 'none'; carregar(); });
+    });
+    Dados.modoServidor().then(function (srv) {
+      document.getElementById('modo').textContent = srv
+        ? 'Conectado ao banco de dados (SQLite via servidor Flask).'
+        : 'Modo demonstração: sem servidor, as mensagens ficam salvas apenas neste navegador.';
+    });
+    carregar();
+  </script>
+</body>
+</html>
