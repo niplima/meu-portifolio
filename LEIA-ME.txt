@@ -16,3 +16,10 @@ B) Com banco de dados de verdade (Python + SQLite)
 
 O modelo físico para MySQL (entrega da AV1) está em banco/portfolio.sql;
 app.py usa a mesma estrutura em SQLite.
+
+ESTRUTURA DO BACK-END (POO)
+   database.py  -> classe Database (conexão e criação do banco)
+   models.py    -> classes Categoria, Tecnologia, Projeto, Mensagem
+   daos.py      -> BaseDAO e DAOs de cada entidade (único lugar com SQL)
+   app.py       -> rotas Flask (chamam os DAOs)
+   docs/        -> diagrama de classes UML e modelos conceitual/lógico
